@@ -1,10 +1,12 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 Simple Digest-MD5 implementation (client side)
 
 Implementation based on RFC 2831 (http://www.ietf.org/rfc/rfc2831.txt)
 """
+
+from __future__ import unicode_literals
 
 import base64
 import hashlib

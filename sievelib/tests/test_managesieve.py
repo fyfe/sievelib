@@ -1,6 +1,8 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """Managesieve test cases."""
+
+from __future__ import unicode_literals
 
 import unittest
 try:

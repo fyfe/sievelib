@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 This module provides a simple but functional parser for the SIEVE
@@ -8,7 +8,8 @@ language used to filter emails.
 This implementation is based on RFC 5228 (http://tools.ietf.org/html/rfc5228)
 
 """
-from __future__ import print_function
+
+from __future__ import unicode_literals, print_function
 
 import re
 import sys

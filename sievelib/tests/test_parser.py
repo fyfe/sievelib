@@ -1,8 +1,11 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 Unit tests for the SIEVE language parser.
 """
+
+from __future__ import unicode_literals
+
 import unittest
 import os.path
 import codecs

@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 A MANAGESIEVE client.
@@ -9,7 +9,8 @@ a user to syntactically flawed scripts.
 
 Implementation based on RFC 5804.
 """
-from __future__ import print_function
+
+from __future__ import unicode_literals, print_function
 
 import base64
 import re

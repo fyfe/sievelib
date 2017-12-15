@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
+
 """Some tools."""
+
+from __future__ import unicode_literals
 
 import six
 
