@@ -27,8 +27,8 @@ class FiltersSet(object):
 
     """A set of filters."""
 
-    def __init__(self, name, filter_name_pretext=u"# Filter: ",
-                 filter_desc_pretext=u"# Description: "):
+    def __init__(self, name, filter_name_pretext="# Filter: ",
+                 filter_desc_pretext="# Description: "):
         """Represents a set of one or more filters
 
         :param name: the filterset's name
@@ -421,11 +421,11 @@ class FiltersSet(object):
         cmd = self.__gen_require_command()
         if cmd:
             cmd.tosieve(target=target)
-            target.write(u"\n")
+            target.write("\n")
         for f in self.filters:
             target.write("{}{}\n".format(self.filter_name_pretext, f["name"]))
             if "description" in f and f["description"]:
-                target.write(u"{}{}\n".format(
+                target.write("{}{}\n".format(
                     self.filter_desc_pretext, f["description"]))
             f["content"].tosieve(target=target)
 

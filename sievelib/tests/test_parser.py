@@ -484,7 +484,7 @@ it is allowed by the RFC :p */
 
     def test_nonopened_block(self):
         self.compilation_ko(b"""
-if header :is "Sender" "me@example.com" 
+if header :is "Sender" "me@example.com"
     discard;
 }
 """)
@@ -499,7 +499,7 @@ if header :is "Sender" "me@example.com" {
     def test_unknown_token(self):
         self.compilation_ko(b"""
 if header :is "Sender" "Toto" & header :contains "Cc" "Tata" {
-    
+
 }
 """)
 
@@ -656,7 +656,7 @@ class DateCommands(SieveTest):
     def test_currentdate_command(self):
         self.compilation_ok(b"""require ["date", "relational"];
 
-if allof ( currentdate :value "ge" "date" "2013-10-23" , currentdate :value "le" "date" "2014-10-12" ) 
+if allof ( currentdate :value "ge" "date" "2013-10-23" , currentdate :value "le" "date" "2014-10-12" )
 {
     discard;
 }
@@ -665,7 +665,7 @@ if allof ( currentdate :value "ge" "date" "2013-10-23" , currentdate :value "le"
     def test_currentdate_command_timezone(self):
         self.compilation_ok(b"""require ["date", "relational"];
 
-if allof ( currentdate :zone "+0100" :value "ge" "date" "2013-10-23" , currentdate :value "le" "date" "2014-10-12" ) 
+if allof ( currentdate :zone "+0100" :value "ge" "date" "2013-10-23" , currentdate :value "le" "date" "2014-10-12" )
 {
     discard;
 }
@@ -674,9 +674,9 @@ if allof ( currentdate :zone "+0100" :value "ge" "date" "2013-10-23" , currentda
     def test_currentdate_norel(self):
         self.compilation_ok(b"""require ["date"];
 
-if allof ( 
-  currentdate :zone "+0100" :is "date" "2013-10-23"  
-) 
+if allof (
+  currentdate :zone "+0100" :is "date" "2013-10-23"
+)
 {
     discard;
 }""")
@@ -687,7 +687,7 @@ class VariablesCommands(SieveTest):
         self.compilation_ok(b"""require ["variables"];
 
 set "matchsub" "testsubject";
-        
+
 if allof (
   header :contains ["Subject"] "${header}"
 )

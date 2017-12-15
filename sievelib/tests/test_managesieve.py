@@ -107,14 +107,14 @@ if envelope :contains "to" "tmartin+sent" {
 """
         mock_socket.return_value.recv.side_effect = (
             b'OK "putscript completed."\r\n', )
-        self.assertTrue(self.client.putscript(u"test_script", script))
+        self.assertTrue(self.client.putscript("test_script", script))
 
     def test_deletescript(self, mock_socket):
         """Test deletescript command."""
         self.authenticate(mock_socket)
         mock_socket.return_value.recv.side_effect = (
             b'OK "deletescript completed."\r\n', )
-        self.assertTrue(self.client.deletescript(u"test_script"))
+        self.assertTrue(self.client.deletescript("test_script"))
 
     def test_checkscript(self, mock_socket):
         """Test checkscript command."""
@@ -129,21 +129,21 @@ if envelope :contains "to" "tmartin+sent" {
         self.authenticate(mock_socket)
         mock_socket.return_value.recv.side_effect = (
             b'OK "setactive completed."\r\n', )
-        self.assertTrue(self.client.setactive(u"test_script"))
+        self.assertTrue(self.client.setactive("test_script"))
 
     def test_havespace(self, mock_socket):
         """Test havespace command."""
         self.authenticate(mock_socket)
         mock_socket.return_value.recv.side_effect = (
             b'OK "havespace completed."\r\n', )
-        self.assertTrue(self.client.havespace(u"test_script", 1000))
+        self.assertTrue(self.client.havespace("test_script", 1000))
 
     def test_renamescript(self, mock_socket):
         """Test renamescript command."""
         self.authenticate(mock_socket)
         mock_socket.return_value.recv.side_effect = (
             b'OK "renamescript completed."\r\n', )
-        self.assertTrue(self.client.renamescript(u"old_script", u"new_script"))
+        self.assertTrue(self.client.renamescript("old_script", "new_script"))
 
     def test_renamescript_simulated(self, mock_socket):
         """Test renamescript command simulation."""
@@ -161,7 +161,7 @@ if envelope :contains "to" "tmartin+sent" {
             b'OK "deletescript completed."\r\n'
         )
         self.assertTrue(
-            self.client.renamescript(u"main_script", u"new_script"))
+            self.client.renamescript("main_script", "new_script"))
 
 
 if __name__ == "__main__":

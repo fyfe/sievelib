@@ -148,7 +148,7 @@ if false {
 
     def test_add_filter_unicode(self):
         """Add a filter containing unicode data."""
-        name = u"Test\xe9".encode("utf-8")
+        name = "Test\xe9".encode("utf-8")
         self.fs.addfilter(
             name,
             [('Sender', ":is", 'toto@toto.com'), ],
