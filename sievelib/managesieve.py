@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 A MANAGESIEVE client.
@@ -9,7 +9,8 @@ a user to syntactically flawed scripts.
 
 Implementation based on RFC 5804.
 """
-from __future__ import print_function
+
+from __future__ import unicode_literals, print_function
 
 import base64
 import re
@@ -25,11 +26,11 @@ from . import tools
 
 CRLF = b"\r\n"
 
-KNOWN_CAPABILITIES = [u"IMPLEMENTATION", u"SASL", u"SIEVE",
-                      u"STARTTLS", u"NOTIFY", u"LANGUAGE",
-                      u"VERSION"]
+KNOWN_CAPABILITIES = ["IMPLEMENTATION", "SASL", "SIEVE",
+                      "STARTTLS", "NOTIFY", "LANGUAGE",
+                      "VERSION"]
 
-SUPPORTED_AUTH_MECHS = [u"DIGEST-MD5", u"PLAIN", u"LOGIN"]
+SUPPORTED_AUTH_MECHS = ["DIGEST-MD5", "PLAIN", "LOGIN"]
 
 
 class Error(Exception):
@@ -592,7 +593,7 @@ class Client(object):
             lines = content.splitlines()
             if self.__size_expr.match(lines[0]) is not None:
                 lines = lines[1:]
-            return u"\n".join([line.decode("utf-8") for line in lines])
+            return "\n".join([line.decode("utf-8") for line in lines])
         return None
 
     @authentication_required
@@ -703,7 +704,7 @@ class Client(object):
             raise NotImplementedError(
                 "server does not support CHECKSCRIPT command")
         content = tools.to_bytes(
-            u"{%d+}%s%s" % (len(content), str(CRLF), content))
+            "{%d+}%s%s" % (len(content), str(CRLF), content))
         code, data = self.__send_command("CHECKSCRIPT", [content])
         if code == "OK":
             return True

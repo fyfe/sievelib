@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 Simple Digest-MD5 implementation (client side)
@@ -6,11 +6,15 @@ Simple Digest-MD5 implementation (client side)
 Implementation based on RFC 2831 (http://www.ietf.org/rfc/rfc2831.txt)
 """
 
+from __future__ import unicode_literals
+
 import base64
 import hashlib
 import binascii
 import re
 import random
+
+import six
 
 
 class DigestMD5(object):
@@ -28,7 +32,7 @@ class DigestMD5(object):
 
     def __make_cnonce(self):
         ret = ""
-        for i in xrange(12):
+        for i in range(12):
             ret += chr(random.randint(0, 0xff))
         return base64.b64encode(ret)
 
@@ -55,7 +59,7 @@ class DigestMD5(object):
 
     def response(self, username, password, authz_id=''):
         self.realm = self.__params["realm"] \
-            if self.__params.has_key("realm") else ""
+            if "realm" in self.__params else ""
         self.cnonce = self.__make_cnonce()
         respvalue = self.__make_response(username, password)
 
@@ -65,7 +69,7 @@ class DigestMD5(object):
                ('realm="%s",' % self.realm) if len(self.realm) else "",
                self.__params["nonce"], self.cnonce, self.__digesturi, respvalue)
         if authz_id:
-            if type(authz_id) is unicode:
+            if isinstance(authz_id, six.text_type):
                 authz_id = authz_id.encode("utf-8")
             dgres += ',authzid="%s"' % authz_id
 
@@ -74,4 +78,4 @@ class DigestMD5(object):
     def check_last_challenge(self, username, password, value):
         challenge = base64.b64decode(value.strip('"'))
         return challenge == \
-               ("rspauth=%s" % self.__make_response(username, password, True))
+            ("rspauth=%s" % self.__make_response(username, password, True))

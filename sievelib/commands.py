@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 """
 SIEVE commands representation
@@ -82,6 +82,7 @@ class ExtensionNotLoaded(CommandError):
 
     def __str__(self):
         return "extension '{}' not loaded".format(self.name)
+
 
 # Statement elements (see RFC, section 8.3)
 # They are used in different commands.
@@ -774,8 +775,8 @@ def get_command_instance(name, parent=None, checkexists=True):
 
     # Mapping between extension names and command names
     extension_map = {
-        'date': set(['currentdate']),
-        'variables': set(['set'])
+        'date': ('currentdate',),
+        'variables': ('set',)
     }
     extname = name
     for extension in extension_map:
